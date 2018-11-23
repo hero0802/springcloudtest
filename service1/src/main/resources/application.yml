@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: service1
+  cloud:
+    config:
+      name: mysql
+      profile: dev
+      uri: http://192.168.120.9:8084
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/student?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: xinhong12345
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.120.9:8081/eureka/
+  instance:
+    prefer-ip-address: true #使用IP地址
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}:${spring.application.name}
+server:
+  port: 8089
+logging:
+  config: classpath:log4j2.xml

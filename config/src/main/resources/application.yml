@@ -1,0 +1,19 @@
+server:
+  port: 8084
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.120.9:8081/eureka/
+  instance:
+    prefer-ip-address: true #使用IP地址
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}:${spring.application.name}
+spring:
+  application:
+    name: config
+  profiles:
+    active: native #设置为本地启动的方式，而不是通过git
+  cloud:
+    config:
+      server:
+        native:
+          searchLocations: classpath:/config

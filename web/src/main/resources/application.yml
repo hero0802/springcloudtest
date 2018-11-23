@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: web
+  cloud:
+    config:
+      name: mysql
+      profile: dev
+      uri: http://192.168.120.9:8084
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.120.9:8081/eureka/
+  instance:
+    prefer-ip-address: true #使用IP地址
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+server:
+  port: 8090
+  error:
+    path: error.html
